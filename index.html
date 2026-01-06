@@ -8,7 +8,7 @@
 body{
   margin:0;
   height:100vh;
-  background:#ff4f81;
+  background:linear-gradient(to bottom,#ff9a9e,#fad0c4);
   overflow:hidden;
   display:flex;
   justify-content:center;
@@ -36,32 +36,34 @@ body{
 /* Sorry Text */
 .sorry-text{
   margin-top:15px;
-  font-size:36px;
+  font-size:32px;
   color:white;
-  animation:heartbeat 1.5s infinite;
+  text-align:center;
+  animation:heartbeat 1.4s infinite;
   z-index:3;
 }
 
 @keyframes heartbeat{
   0%{transform:scale(1);}
-  25%{transform:scale(1.1);}
+  25%{transform:scale(1.08);}
   50%{transform:scale(1);}
-  75%{transform:scale(1.1);}
+  75%{transform:scale(1.08);}
   100%{transform:scale(1);}
 }
 
-/* Floating Roses */
+/* Floating Roses with Sorry */
 .rose{
   position:absolute;
   bottom:-50px;
   font-size:22px;
-  color:#ff0033;
+  color:white;
   animation:floatUp linear infinite;
+  opacity:0.9;
 }
 
 @keyframes floatUp{
   from{transform:translateY(0); opacity:1;}
-  to{transform:translateY(-110vh); opacity:0;}
+  to{transform:translateY(-120vh); opacity:0;}
 }
 
 /* Play Button */
@@ -70,7 +72,7 @@ body{
   bottom:20px;
   padding:14px 26px;
   font-size:16px;
-  background:red;
+  background:#ff3366;
   color:white;
   border:none;
   border-radius:30px;
@@ -84,7 +86,9 @@ body{
 
 <img src="photo.jpg" class="photo">
 
-<div class="sorry-text">I’m Really Really Sorry ❤️</div>
+<div class="sorry-text">
+  Meri Pahadan i am really really sorry 😘🤗
+</div>
 
 <button id="playBtn" onclick="playMusic()">▶ Play Music ❤️</button>
 
@@ -93,8 +97,8 @@ body{
 </audio>
 
 <script>
-/* Roses with Sorry Text */
-for(let i=0;i<60;i++){
+/* Roses with white sorry text */
+for(let i=0;i<70;i++){
   let rose=document.createElement("div");
   rose.className="rose";
   rose.innerHTML="🌹 sorry";
@@ -104,7 +108,7 @@ for(let i=0;i<60;i++){
   document.body.appendChild(rose);
 }
 
-/* Music */
+/* Music play */
 function playMusic(){
   let audio=document.getElementById("bgm");
   audio.play();
