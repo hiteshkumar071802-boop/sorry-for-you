@@ -9,7 +9,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
@@ -28,7 +28,6 @@ body{
     background:url("bg.jpg") center/cover no-repeat;
     z-index:-3;
 }
-
 .bg::after{
     content:"";
     position:absolute;
@@ -41,10 +40,9 @@ body{
     position:absolute;
     color:white;
     font-size:18px;
-    animation: floatUp 10s linear infinite;
+    animation:floatUp 10s linear infinite;
     opacity:0.9;
 }
-
 @keyframes floatUp{
     0%{
         transform:translateY(100vh) scale(0.8);
@@ -77,7 +75,6 @@ body{
     box-shadow:0 0 30px hotpink;
     margin:auto;
 }
-
 .photo img{
     width:100%;
     height:100%;
@@ -87,10 +84,9 @@ body{
 /* ===== HEART ===== */
 .heart{
     font-size:50px;
-    animation: beat 1.2s infinite;
+    animation:beat 1.2s infinite;
     margin-top:15px;
 }
-
 @keyframes beat{
     0%,100%{transform:scale(1);}
     50%{transform:scale(1.3);}
@@ -103,18 +99,20 @@ body{
     text-shadow:0 0 10px pink;
 }
 
-/* ===== MUSIC BUTTON ===== */
+/* ===== MUSIC BUTTON (UPDATED ONLY THIS) ===== */
 .music-btn{
     position:fixed;
     bottom:20px;
     right:20px;
-    background:pink;
+    background:#ff69b4;
     color:black;
     border:none;
-    padding:12px 18px;
-    border-radius:30px;
-    font-size:16px;
+    padding:18px 28px;        /* thoda bada */
+    border-radius:35px;
+    font-size:18px;           /* text bada */
+    font-weight:bold;
     cursor:pointer;
+    box-shadow:0 0 15px white;
 }
 </style>
 </head>
@@ -155,7 +153,7 @@ for(let i=0;i<30;i++){
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" onclick="toggleMusic()">⏸ Music</button>
+<button class="music-btn" onclick="toggleMusic()">PRESS</button>
 
 <script>
 let music=document.getElementById("music");
@@ -164,10 +162,8 @@ let btn=document.querySelector(".music-btn");
 function toggleMusic(){
     if(music.paused){
         music.play();
-        btn.innerText="⏸ Music";
     }else{
         music.pause();
-        btn.innerText="▶ Music";
     }
 }
 </script>
