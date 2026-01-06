@@ -6,166 +6,176 @@
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    height:100vh;
-    overflow:hidden;
-    background:black;
+  height:100vh;
+  overflow:hidden;
+  background:black;
 }
 
 /* ===== BACKGROUND ===== */
 .bg{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:url("bg.jpg") center/cover no-repeat;
-    z-index:-3;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:url("bg.jpg") center/cover no-repeat;
+  z-index:-3;
 }
 .bg::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(255,182,193,0.35);
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,182,193,0.35);
 }
 
 /* ===== ROSES FLOAT ===== */
 .rose{
-    position:absolute;
-    color:white;
-    font-size:18px;
-    animation:floatUp 10s linear infinite;
-    opacity:0.9;
+  position:absolute;
+  color:white;
+  font-size:18px;
+  animation:floatUp 10s linear infinite;
+  opacity:0.9;
 }
 @keyframes floatUp{
-    0%{
-        transform:translateY(100vh) scale(0.8);
-        opacity:0;
-    }
-    20%{opacity:1;}
-    100%{
-        transform:translateY(-10vh) scale(1.2);
-        opacity:0;
-    }
+  0%{transform:translateY(100vh) scale(0.8);opacity:0;}
+  20%{opacity:1;}
+  100%{transform:translateY(-10vh) scale(1.2);opacity:0;}
 }
 
 /* ===== CENTER ===== */
 .center{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    text-align:center;
-    color:white;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  color:white;
 }
 
-/* ===== PHOTO CIRCLE ===== */
+/* ===== PHOTO SLIDESHOW (CIRCLE) ===== */
 .photo{
-    width:260px;
-    height:260px;
-    border-radius:50%;
-    border:6px solid white;
-    overflow:hidden;
-    box-shadow:0 0 30px hotpink;
-    margin:auto;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  border:6px solid white;
+  overflow:hidden;
+  box-shadow:0 0 30px hotpink;
+  margin:auto;
+  position:relative;
 }
+
 .photo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  top:0;
+  left:0;
+  opacity:0;
+  transition:opacity 1.5s ease-in-out;
+}
+
+.photo img.active{
+  opacity:1;
 }
 
 /* ===== HEART ===== */
 .heart{
-    font-size:50px;
-    animation:beat 1.2s infinite;
-    margin-top:15px;
+  font-size:50px;
+  animation:beat 1.2s infinite;
+  margin-top:15px;
 }
 @keyframes beat{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.3);}
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.3);}
 }
 
 /* ===== TEXT ===== */
 .text{
-    margin-top:10px;
-    font-size:22px;
-    text-shadow:0 0 10px pink;
+  margin-top:10px;
+  font-size:22px;
+  text-shadow:0 0 10px pink;
 }
 
-/* ===== MUSIC BUTTON (UPDATED ONLY THIS) ===== */
+/* ===== MUSIC BUTTON ===== */
 .music-btn{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#ff69b4;
-    color:black;
-    border:none;
-    padding:18px 28px;        /* thoda bada */
-    border-radius:35px;
-    font-size:18px;           /* text bada */
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 0 15px white;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#ff69b4;
+  color:black;
+  border:none;
+  padding:18px 28px;
+  border-radius:35px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 0 15px white;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Background -->
 <div class="bg"></div>
 
 <!-- Roses -->
 <script>
 for(let i=0;i<30;i++){
-    let rose=document.createElement("div");
-    rose.className="rose";
-    rose.innerHTML="🌹 sorry";
-    rose.style.left=Math.random()*100+"vw";
-    rose.style.animationDuration=6+Math.random()*6+"s";
-    document.body.appendChild(rose);
+  let rose=document.createElement("div");
+  rose.className="rose";
+  rose.innerHTML="🌹 sorry";
+  rose.style.left=Math.random()*100+"vw";
+  rose.style.animationDuration=6+Math.random()*6+"s";
+  document.body.appendChild(rose);
 }
 </script>
 
-<!-- Center Content -->
+<!-- Center -->
 <div class="center">
-    <div class="photo">
-        <img src="photo.jpg">
-    </div>
+  <div class="photo">
+    <img src="photo1.jpg" class="active">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+  </div>
 
-    <div class="heart">❤️</div>
+  <div class="heart">❤️</div>
 
-    <div class="text">
-        Meri Pahadan<br>
-        i am really really sorry 😘🤗
-    </div>
+  <div class="text">
+    Meri Pahadan<br>
+    i am really really sorry 😘🤗
+  </div>
 </div>
 
 <!-- Music -->
 <audio id="music" autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <button class="music-btn" onclick="toggleMusic()">PRESS</button>
 
 <script>
+/* Music */
 let music=document.getElementById("music");
-let btn=document.querySelector(".music-btn");
-
 function toggleMusic(){
-    if(music.paused){
-        music.play();
-    }else{
-        music.pause();
-    }
+  music.paused ? music.play() : music.pause();
 }
+
+/* Slideshow */
+let slides=document.querySelectorAll(".photo img");
+let index=0;
+setInterval(()=>{
+  slides[index].classList.remove("active");
+  index=(index+1)%slides.length;
+  slides[index].classList.add("active");
+},3500);
 </script>
 
 </body>
