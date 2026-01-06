@@ -123,3 +123,20 @@ for (let i = 0; i < 30; i++) {
 
 </body>
 </html>
+<audio id="bgm" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playMusic()">
+  ▶ Play For You ❤️
+</button>
+
+<script>
+function playMusic() {
+  const audio = document.getElementById("bgm");
+  audio.volume = 1.0;
+  audio.play().catch(() => {
+    alert("Please tap once more ❤️");
+  });
+}
+</script>
