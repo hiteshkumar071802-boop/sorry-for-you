@@ -2,97 +2,113 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sorry For You ❤️</title>
+<title>1 Crore Times Sorry ❤️</title>
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(to bottom, #ff758c, #ff7eb3);
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Segoe UI', sans-serif;
+body{
+  margin:0;
+  height:100vh;
+  background:#ff4f81;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  font-family:'Segoe UI',sans-serif;
+}
+
+/* Photo */
+.photo{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  object-fit:cover;
+  border:6px solid white;
+  z-index:3;
+  animation:fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:scale(0.7);}
+  to{opacity:1; transform:scale(1);}
 }
 
 /* Sorry Text */
-.sorry-text {
-  font-size: 48px;
-  color: white;
-  animation: pulse 1.5s infinite;
-  z-index: 2;
+.sorry-text{
+  margin-top:15px;
+  font-size:36px;
+  color:white;
+  animation:heartbeat 1.5s infinite;
+  z-index:3;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+@keyframes heartbeat{
+  0%{transform:scale(1);}
+  25%{transform:scale(1.1);}
+  50%{transform:scale(1);}
+  75%{transform:scale(1.1);}
+  100%{transform:scale(1);}
 }
 
-/* Hearts */
-.heart {
-  position: absolute;
-  color: red;
-  font-size: 24px;
-  animation: float 6s linear infinite;
+/* Floating Roses */
+.rose{
+  position:absolute;
+  bottom:-50px;
+  font-size:22px;
+  color:#ff0033;
+  animation:floatUp linear infinite;
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(100vh) scale(0.5);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-10vh) scale(1.2);
-    opacity: 0;
-  }
+@keyframes floatUp{
+  from{transform:translateY(0); opacity:1;}
+  to{transform:translateY(-110vh); opacity:0;}
 }
 
 /* Play Button */
-#playBtn {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 14px 26px;
-  font-size: 16px;
-  background: red;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  z-index: 9999;
+#playBtn{
+  position:fixed;
+  bottom:20px;
+  padding:14px 26px;
+  font-size:16px;
+  background:red;
+  color:white;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  z-index:9999;
 }
 </style>
 </head>
 
 <body>
 
-<div class="sorry-text">I’m Really Sorry ❤️</div>
+<img src="photo.jpg" class="photo">
 
-<button id="playBtn" onclick="playMusic()">▶ Play For You ❤️</button>
+<div class="sorry-text">I’m Really Really Sorry ❤️</div>
+
+<button id="playBtn" onclick="playMusic()">▶ Play Music ❤️</button>
 
 <audio id="bgm" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-/* Hearts Animation */
-for (let i = 0; i < 40; i++) {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-  document.body.appendChild(heart);
+/* Roses with Sorry Text */
+for(let i=0;i<60;i++){
+  let rose=document.createElement("div");
+  rose.className="rose";
+  rose.innerHTML="🌹 sorry";
+  rose.style.left=Math.random()*100+"vw";
+  rose.style.animationDuration=(Math.random()*3+4)+"s";
+  rose.style.fontSize=(Math.random()*8+18)+"px";
+  document.body.appendChild(rose);
 }
 
-/* Music Play */
-function playMusic() {
-  const audio = document.getElementById("bgm");
-  audio.volume = 1.0;
+/* Music */
+function playMusic(){
+  let audio=document.getElementById("bgm");
   audio.play();
+  document.getElementById("playBtn").style.display="none";
 }
 </script>
 
