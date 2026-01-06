@@ -18,21 +18,32 @@ body{
   background:black;
 }
 
-/* ===== BACKGROUND ===== */
+/* ===== BACKGROUND SLIDESHOW ===== */
 .bg{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:url("bg.jpg") center/cover no-repeat;
+  inset:0;
   z-index:-3;
 }
+
+.bg img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 2s ease-in-out;
+}
+
+.bg img.active{
+  opacity:1;
+}
+
 .bg::after{
   content:"";
   position:absolute;
   inset:0;
   background:rgba(255,182,193,0.35);
+  z-index:1;
 }
 
 /* ===== ROSES FLOAT ===== */
@@ -42,14 +53,16 @@ body{
   font-size:18px;
   animation:floatUp 10s linear infinite;
   opacity:0.9;
+  z-index:2;
 }
+
 @keyframes floatUp{
   0%{transform:translateY(100vh) scale(0.8);opacity:0;}
   20%{opacity:1;}
   100%{transform:translateY(-10vh) scale(1.2);opacity:0;}
 }
 
-/* ===== CENTER ===== */
+/* ===== CENTER CONTENT ===== */
 .center{
   position:absolute;
   top:50%;
@@ -57,33 +70,7 @@ body{
   transform:translate(-50%,-50%);
   text-align:center;
   color:white;
-}
-
-/* ===== PHOTO SLIDESHOW (CIRCLE) ===== */
-.photo{
-  width:260px;
-  height:260px;
-  border-radius:50%;
-  border:6px solid white;
-  overflow:hidden;
-  box-shadow:0 0 30px hotpink;
-  margin:auto;
-  position:relative;
-}
-
-.photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  position:absolute;
-  top:0;
-  left:0;
-  opacity:0;
-  transition:opacity 1.5s ease-in-out;
-}
-
-.photo img.active{
-  opacity:1;
+  z-index:3;
 }
 
 /* ===== HEART ===== */
@@ -92,6 +79,7 @@ body{
   animation:beat 1.2s infinite;
   margin-top:15px;
 }
+
 @keyframes beat{
   0%,100%{transform:scale(1);}
   50%{transform:scale(1.3);}
@@ -118,13 +106,19 @@ body{
   font-weight:bold;
   cursor:pointer;
   box-shadow:0 0 15px white;
+  z-index:4;
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
+<!-- Background Slideshow -->
+<div class="bg">
+  <img src="photo1.jpg" class="active">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+</div>
 
 <!-- Roses -->
 <script>
@@ -138,16 +132,9 @@ for(let i=0;i<30;i++){
 }
 </script>
 
-<!-- Center -->
+<!-- Center Content -->
 <div class="center">
-  <div class="photo">
-    <img src="photo1.jpg" class="active">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
-  </div>
-
   <div class="heart">❤️</div>
-
   <div class="text">
     Meri Pahadan<br>
     i am really really sorry 😘🤗
@@ -155,7 +142,7 @@ for(let i=0;i<30;i++){
 </div>
 
 <!-- Music -->
-<audio id="music" autoplay loop>
+<audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -168,9 +155,10 @@ function toggleMusic(){
   music.paused ? music.play() : music.pause();
 }
 
-/* Slideshow */
-let slides=document.querySelectorAll(".photo img");
+/* Background Slideshow */
+let slides=document.querySelectorAll(".bg img");
 let index=0;
+
 setInterval(()=>{
   slides[index].classList.remove("active");
   index=(index+1)%slides.length;
