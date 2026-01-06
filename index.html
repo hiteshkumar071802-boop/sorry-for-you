@@ -46,7 +46,7 @@ body{
   z-index:1;
 }
 
-/* ===== ROSES FLOAT ===== */
+/* ===== ROSES ===== */
 .rose{
   position:absolute;
   color:white;
@@ -62,7 +62,7 @@ body{
   100%{transform:translateY(-10vh) scale(1.2);opacity:0;}
 }
 
-/* ===== CENTER CONTENT ===== */
+/* ===== CENTER ===== */
 .center{
   position:absolute;
   top:50%;
@@ -73,7 +73,7 @@ body{
   z-index:3;
 }
 
-/* ===== CENTER PHOTO ===== */
+/* ===== PROFILE PIC (CENTER) ===== */
 .photo{
   width:260px;
   height:260px;
@@ -130,7 +130,7 @@ body{
 
 <body>
 
-<!-- ===== BACKGROUND SLIDESHOW (8 PHOTOS) ===== -->
+<!-- ===== BACKGROUND SLIDESHOW (photo1.jpg – photo8.jpg) ===== -->
 <div class="bg">
   <img src="photo1.jpg" class="active">
   <img src="photo2.jpg">
@@ -157,7 +157,7 @@ for(let i=0;i<35;i++){
 <!-- ===== CENTER CONTENT ===== -->
 <div class="center">
   <div class="photo">
-    <img src="center.jpg">
+    <img src="photo.jpg">
   </div>
 
   <div class="heart">❤️</div>
@@ -176,13 +176,13 @@ for(let i=0;i<35;i++){
 <button class="music-btn" onclick="toggleMusic()">PRESS</button>
 
 <script>
-/* Music Control */
+/* Music */
 let music=document.getElementById("music");
 function toggleMusic(){
   music.paused ? music.play() : music.pause();
 }
 
-/* Background Slideshow Logic */
+/* Background Slideshow */
 let slides=document.querySelectorAll(".bg img");
 let index=0;
 
