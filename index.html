@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(#000000, #1a001a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+}
+
+.heart {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: relative;
+  transform: rotate(-45deg);
+  animation: beat 1s infinite;
+  margin: auto;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 100px;
+  height: 100px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  left: 50px;
+  top: 0;
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1) rotate(-45deg); }
+  50% { transform: scale(1.2) rotate(-45deg); }
+}
+
+.text {
+  margin-top: 30px;
+  font-size: 22px;
+  opacity: 0;
+  animation: fade 2s forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes fade {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="heart"></div>
+  <div class="text">I'm really sorry ❤️<br>Please forgive me 🥺</div>
+</div>
+</body>
+</html>
